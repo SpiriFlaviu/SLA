@@ -1,0 +1,14 @@
+<mat-expansion-panel (opened)="fetchFile(file.raw_url)">
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+     Filename: {{file.filename}}
+    </mat-panel-title>
+    <mat-panel-description>
+      <mat-chip color="primary" size="small" selected> {{file.language}}</mat-chip>
+    </mat-panel-description>
+  </mat-expansion-panel-header>
+  Url: <br>
+  <code>{{file.raw_url}}</code> <br>
+  Content: <br>
+  <code>{{content}}</code> <br>
+</mat-expansion-panel>

@@ -13,12 +13,14 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import {MatButtonModule} from "@angular/material/button";
 import {MatCardModule} from "@angular/material/card";
+import { GistFileItemComponent } from './gist/components/gist-file-item/gist-file-item.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SearchComponent,
-    GistItemComponent
+    GistItemComponent,
+    GistFileItemComponent
   ],
   imports: [
     BrowserModule,

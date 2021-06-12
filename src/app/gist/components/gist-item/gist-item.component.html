@@ -8,7 +8,7 @@
         <mat-chip
           class="chip"
           color="primary" size="small" selected
-                  *ngFor="let tag of tags">
+          *ngFor="let tag of tags">
           {{tag}}
         </mat-chip>
       </mat-chip-list>
@@ -16,29 +16,21 @@
   </mat-expansion-panel-header>
 
   Files:
+  <app-gist-file-item *ngFor="let item of gist.files | keyvalue"
+      [file]=item.value>
 
-  <mat-expansion-panel *ngFor="let item of gist.files | keyvalue">
-    <mat-expansion-panel-header>
-      <mat-panel-title>
-        {{item.value.filename}}
+  </app-gist-file-item>
 
-      </mat-panel-title>
-      <mat-panel-description>
-      <mat-chip color="primary" size="small" selected> {{item.value.language}}</mat-chip>
-      </mat-panel-description>
-    </mat-expansion-panel-header>
 
-  </mat-expansion-panel>
-
-  Forked by:
-  <mat-card>
-    <mat-card-header>
-
-  <div *ngFor="let fork of forks">
-    <a href="{{fork.owner.html_url}}" target="_blank">
-    <img mat-card-avatar src="{{fork.owner.avatar_url}}" alt="{{fork.owner.login}} avatar"/>
-    </a>
+  <div *ngIf="forks.length > 0">Forked by:
+    <mat-card>
+      <mat-card-header>
+        <div *ngFor="let fork of forks">
+          <a href="{{fork.owner.html_url}}" target="_blank">
+            <img mat-card-avatar src="{{fork.owner.avatar_url}}" alt="{{fork.owner.login}} avatar"/>
+          </a>
+        </div>
+      </mat-card-header>
+    </mat-card>
   </div>
-    </mat-card-header>
-  </mat-card>
 </mat-expansion-panel>
