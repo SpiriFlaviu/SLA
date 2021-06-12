@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {GithubService} from "../../../api/service/github.service";
 import {GistDTO} from "../../../api/model/gistDTO";
-import {HttpErrorResponse} from "@angular/common/http";
 
 
 @Component({
@@ -13,41 +12,40 @@ export class SearchComponent implements OnInit {
 
   gists: Array<GistDTO> = [];
   filteredGists: Array<GistDTO> = [];
-  constructor(private githubService: GithubService) { }
+
+  constructor(private githubService: GithubService) {
+  }
+
   tags: Set<string> = new Set<string>();
   tagFilterValue: string;
+
   ngOnInit(): void {
   }
 
   searchByUsername(username: string) {
     this.tagFilterValue = "";
     this.tags = new Set<string>();
-    if(username)
-    {
-      this.githubService.getListByUsername(username).subscribe((data: any[])=>{
+    if (username) {
+      this.githubService.getListByUsername(username).subscribe((data: any[]) => {
         this.gists = data;
         this.filteredGists = data;
       });
     }
   }
 
-  addToTags(tags: Set<string>)
-  {
-    tags.forEach(tag=>this.tags.add(tag));
+  addToTags(tags: Set<string>) {
+    tags.forEach(tag => this.tags.add(tag));
   }
 
   handleFilter() {
-    console.log(this.tagFilterValue);
-    if(!this.tagFilterValue)
-    {
+    if (!this.tagFilterValue) {
       this.filteredGists = this.gists;
       return;
     }
-    this.filteredGists = this.gists.filter((gist :GistDTO) => {
-      for(let item in gist.files )
-      {
+    this.filteredGists = this.gists.filter((gist: GistDTO) => {
+      for (let item in gist.files) {
         let file = gist.files[item];
-        if(this.tagMatchesFileLanguage(file.language, this.tagFilterValue))
+        if (this.tagMatchesFileLanguage(file.language, this.tagFilterValue))
           return true;
       }
       return false;
@@ -55,11 +53,8 @@ export class SearchComponent implements OnInit {
 
   }
 
-  tagMatchesFileLanguage(fileLanguage:string, filterValue: string)
-  {
-    if(filterValue === "Unknown")
-    {
-      console.log(filterValue, fileLanguage, "aici");
+  tagMatchesFileLanguage(fileLanguage: string, filterValue: string) {
+    if (filterValue === "Unknown") {
       return !fileLanguage;
     }
     return fileLanguage === filterValue;

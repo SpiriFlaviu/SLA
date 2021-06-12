@@ -1,4 +1,4 @@
-.gist-file-header{
+.gist-file-header {
   display: flex;
   justify-content: space-between;
 }
@@ -11,5 +11,5 @@ pre {
   font-family: Consolas, "courier new", serif;
   background-color: #f1f1f1;
   padding: 5px;
-  white-space:pre-wrap;
+  white-space: pre-wrap;
 }

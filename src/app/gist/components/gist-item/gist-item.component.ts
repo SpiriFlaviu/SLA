@@ -43,7 +43,6 @@ export class GistItemComponent implements OnInit {
         return a.created_at < b.created_at ? 1 : -1;
       });
       this.forks = this.forks.slice(0, 3);
-      console.log(data);
     });
   }
 }

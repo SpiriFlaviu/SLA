@@ -13,17 +13,17 @@ export class GistFileItemComponent implements OnInit {
   @Input()
   file: FileDTO;
   content: string;
-  constructor(private githubService: GithubService, private sanitizer: DomSanitizer) { }
+
+  constructor(private githubService: GithubService, private sanitizer: DomSanitizer) {
+  }
 
   ngOnInit(): void {
   }
 
-  fetchFile(url: string)
-  {
-    if(url && !this.content) {
+  fetchFile(url: string) {
+    if (url && !this.content) {
       this.githubService.getFileContent(url).subscribe((data: any) => {
         this.content = data;
-        console.log(data);
       });
     }
   }

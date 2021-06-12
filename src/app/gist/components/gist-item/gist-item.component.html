@@ -8,7 +8,7 @@
         <mat-chip-list>
           <mat-chip
             class="chip"
-            color="primary"  selected
+            color="primary" selected
             *ngFor="let tag of tags">
             {{tag}}
           </mat-chip>
@@ -19,7 +19,7 @@
 
   <div class="info">Files:</div>
   <app-gist-file-item *ngFor="let item of gist.files | keyvalue"
-      [file]=item.value>
+                      [file]=item.value>
 
   </app-gist-file-item>
 

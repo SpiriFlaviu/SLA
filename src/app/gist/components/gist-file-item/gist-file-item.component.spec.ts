@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { GistFileItemComponent } from './gist-file-item.component';
+import {GistFileItemComponent} from './gist-file-item.component';
 
 describe('GistFileItemComponent', () => {
   let component: GistFileItemComponent;
@@ -8,9 +8,9 @@ describe('GistFileItemComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ GistFileItemComponent ]
+      declarations: [GistFileItemComponent]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {
