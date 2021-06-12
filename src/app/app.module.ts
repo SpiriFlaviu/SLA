@@ -9,6 +9,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {CommonModule} from "@angular/common";
 import {MatExpansionModule} from "@angular/material/expansion";
 import {MatChipsModule} from "@angular/material/chips";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatInputModule} from "@angular/material/input";
+import {MatButtonModule} from "@angular/material/button";
 
 @NgModule({
   declarations: [
@@ -22,7 +25,10 @@ import {MatChipsModule} from "@angular/material/chips";
     BrowserAnimationsModule,
     CommonModule,
     MatExpansionModule,
-    MatChipsModule
+    MatChipsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

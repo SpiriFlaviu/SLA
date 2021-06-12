@@ -1,6 +1,13 @@
-<input type="text">
-<button type="button" (click)="searchByUsername()">Search</button>
-<app-gist-item *ngFor="let gist of gists"
-  [gist] = gist>
+<div id="app">
+  <mat-form-field>
+    <label>
+      <input matInput type="search" #username />
+    </label>
 
-</app-gist-item>
+  </mat-form-field>
+    <button mat-raised-button color="primary" (click)="searchByUsername(username.value)">Search</button>
+
+  <app-gist-item *ngFor="let gist of gists"
+    [gist] = gist>
+  </app-gist-item>
+</div>
