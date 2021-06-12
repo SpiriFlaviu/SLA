@@ -20,7 +20,14 @@ export class GistItemComponent implements OnInit {
       let result = new Set<string>();
       for(let key in gist.files )
       {
-        result.add(gist.files[key].language);
+        let language = gist.files[key].language;
+        if(language)
+        {
+          result.add(language);
+        }
+        else {
+          result.add("Unknown");
+        }
       }
       return result;
     }
