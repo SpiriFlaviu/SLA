@@ -21,6 +21,7 @@ export class SearchComponent implements OnInit {
     this.githubService.getListByUsername("spiriflaviu").subscribe((data: any[])=>{
       console.log(data);
       this.gists = data;
+      console.log(this.gists[0].files['gist1filename.txt']);
     })
   }
 }

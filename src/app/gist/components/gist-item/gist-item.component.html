@@ -1,0 +1,26 @@
+<mat-expansion-panel>
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      {{gist.description}}
+    </mat-panel-title>
+    <mat-panel-description>
+      <mat-chip color="primary" size="small" selected
+                *ngFor="let tag of tags">
+        {{tag}}
+      </mat-chip>
+    </mat-panel-description>
+  </mat-expansion-panel-header>
+
+  Files:
+
+  <mat-expansion-panel *ngFor="let item of gist.files | keyvalue">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{item.value.filename}}
+        <mat-chip color="primary" size="small" selected> {{item.value.language}}</mat-chip>
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+
+  </mat-expansion-panel>
+
+</mat-expansion-panel>
