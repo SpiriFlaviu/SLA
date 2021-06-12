@@ -15,4 +15,8 @@ export class GithubService {
     return this.httpClient.get(this.BASE_PATH + "users/" + username + "/gists");
   }
 
+  public getGistForks(gistId: string): Observable<any>
+  {
+    return this.httpClient.get(this.BASE_PATH + "gists/" + gistId + "/forks");
+  }
 }

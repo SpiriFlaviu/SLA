@@ -1,4 +1,4 @@
-<mat-expansion-panel>
+<mat-expansion-panel (opened)="fetchDetails()">
   <mat-expansion-panel-header>
     <mat-panel-title>
       {{gist.description}}
@@ -30,4 +30,15 @@
 
   </mat-expansion-panel>
 
+  Forked by:
+  <mat-card>
+    <mat-card-header>
+
+  <div *ngFor="let fork of forks">
+    <a href="{{fork.owner.html_url}}" target="_blank">
+    <img mat-card-avatar src="{{fork.owner.avatar_url}}" alt="{{fork.owner.login}} avatar"/>
+    </a>
+  </div>
+    </mat-card-header>
+  </mat-card>
 </mat-expansion-panel>
