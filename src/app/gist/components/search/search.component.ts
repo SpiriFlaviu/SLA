@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {GithubService} from "../../../api/service/github.service";
 import {GistDTO} from "../../../api/model/gistDTO";
+import {UserDTO} from "../../../api/model/userDTO";
 
 
 @Component({
@@ -12,6 +13,7 @@ export class SearchComponent implements OnInit {
 
   gists: Array<GistDTO> = [];
   filteredGists: Array<GistDTO> = [];
+  user: UserDTO;
 
   constructor(private githubService: GithubService) {
   }
@@ -30,6 +32,9 @@ export class SearchComponent implements OnInit {
         this.gists = data;
         this.filteredGists = data;
       });
+      this.githubService.getUserDetails(username).subscribe((data: any) => {
+        this.user = data;
+      })
     }
   }
 

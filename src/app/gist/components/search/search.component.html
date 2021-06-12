@@ -11,6 +11,7 @@
       </mat-form-field>
       <button mat-raised-button color="primary" (click)="searchByUsername(username.value)">Search</button>
     </div>
+
     <mat-form-field appearance="fill">
       <mat-label>Tag</mat-label>
       <mat-select [(ngModel)]="tagFilterValue" (ngModelChange)="handleFilter()" name="tag">
@@ -18,7 +19,15 @@
         <mat-option [value]="tag" *ngFor="let tag of tags">{{tag}}</mat-option>
       </mat-select>
     </mat-form-field>
+
+    <div
+      *ngIf="user">
+      <a href="{{user.html_url}}" target="_blank">
+        <img class="avatar" src="{{user.avatar_url}}" alt="{{user.login}} avatar"/>
+      </a>
+    </div>
   </div>
+
   <div class="container">
     <div *ngIf="gists.length > 0">
       <app-gist-item *ngFor="let gist of filteredGists"
