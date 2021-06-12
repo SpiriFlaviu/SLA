@@ -1,2 +1,5 @@
 <input type="text">
 <button type="button" (click)="searchByUsername()">Search</button>
+<div *ngFor="let gist of gists">
+  {{gist.id}}
+</div>
