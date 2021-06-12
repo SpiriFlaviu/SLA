@@ -13,7 +13,8 @@ export class SearchComponent implements OnInit {
 
   gists: Array<GistDTO> = [];
   filteredGists: Array<GistDTO> = [];
-  user: UserDTO;
+  user: UserDTO | null;
+  query: string;
 
   constructor(private githubService: GithubService) {
   }
@@ -25,16 +26,20 @@ export class SearchComponent implements OnInit {
   }
 
   searchByUsername(username: string) {
-    this.tagFilterValue = "";
-    this.tags = new Set<string>();
     if (username) {
+      this.user = null;
+      this.tagFilterValue = "";
+      this.tags = new Set<string>();
+      this.query = username;
+
       this.githubService.getListByUsername(username).subscribe((data: any[]) => {
         this.gists = data;
         this.filteredGists = data;
       });
+
       this.githubService.getUserDetails(username).subscribe((data: any) => {
         this.user = data;
-      })
+      });
     }
   }
 

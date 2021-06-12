@@ -7,7 +7,7 @@
     <div>
       <mat-form-field>
         <mat-label>Username</mat-label>
-        <input matInput type="search" #username (keyup.enter)="searchByUsername(username.value)"/>
+        <input matInput required type="search" #username (keyup.enter)="searchByUsername(username.value)"/>
       </mat-form-field>
       <button mat-raised-button color="primary" (click)="searchByUsername(username.value)">Search</button>
     </div>
@@ -29,13 +29,13 @@
   </div>
 
   <div class="container">
-    <div *ngIf="gists.length > 0">
+    <div *ngIf="gists.length > 0 && user">
       <app-gist-item *ngFor="let gist of filteredGists"
                      [gist]=gist
                      (outputTags)="addToTags($event)">
       </app-gist-item>
     </div>
-    <div *ngIf="gists.length === 0">
+    <div *ngIf="gists.length === 0 && query">
       No results
     </div>
   </div>
