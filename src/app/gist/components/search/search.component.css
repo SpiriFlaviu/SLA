@@ -12,3 +12,7 @@
   display: flex;
   justify-content: space-evenly;
 }
+
+.mat-raised-button{
+  margin: 10px;
+}

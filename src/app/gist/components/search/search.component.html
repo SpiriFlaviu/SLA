@@ -7,7 +7,7 @@
     <div>
       <mat-form-field>
         <mat-label>Username</mat-label>
-        <input matInput type="search" #username/>
+        <input matInput type="search" #username (keyup.enter)="searchByUsername(username.value)"/>
       </mat-form-field>
       <button mat-raised-button color="primary" (click)="searchByUsername(username.value)">Search</button>
     </div>
