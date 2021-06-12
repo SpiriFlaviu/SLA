@@ -17,11 +17,12 @@ A list of public gists created by that user. If you click one gist's description
 Each file has a displayed tag, and their union set is also displayed in the gist's information.
 
 ## Extra features
-
- * If there are no gists found (because either the user does not exist, or it has no gists)
+ * Filter by tag: select from the dropdown the tag you want to filter the gist from. It is reset after a new search.
  * The avatar links to the github user
- * If the description for a gist is empty, "No description" message will be shown instead
- * If the language of a file is empty, the tag "Unknown" will be used
+ * Validation messages:
+     * If there are no gists found (because either the user does not exist, or it has no gists), "No results" message is shown.
+     * If the description for a gist is empty, "No description" message will be shown instead
+     * If the language of a file is empty, the tag "Unknown" will be used
  * "Forked by" section will appear only if there is at least one user who forked the gist
 
 

@@ -8,4 +8,7 @@
   text-align: center;
 }
 
-
+.search-header {
+  display: flex;
+  justify-content: space-evenly;
+}

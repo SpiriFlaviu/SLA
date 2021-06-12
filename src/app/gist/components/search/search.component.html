@@ -3,23 +3,31 @@
   <div class="container">
     <h2>Search gists by git username:</h2>
   </div>
-  <div class="container">
-    <mat-form-field>
-      <label>
-        <input matInput type="search" #username/>
-      </label>
-
+  <div class="container search-header">
+    <div>
+      <mat-form-field>
+        <mat-label>Username</mat-label>
+          <input matInput type="search" #username/>
+      </mat-form-field>
+      <button mat-raised-button color="primary" (click)="searchByUsername(username.value)">Search</button>
+    </div>
+    <mat-form-field appearance="fill">
+      <mat-label>Tag</mat-label>
+      <mat-select [(ngModel)]="tagFilterValue" (ngModelChange)="handleFilter()" name="tag">
+        <mat-option [value]="">All</mat-option>
+        <mat-option [value]="tag" *ngFor="let tag of tags">{{tag}}</mat-option>
+      </mat-select>
     </mat-form-field>
-    <button mat-raised-button color="primary" (click)="searchByUsername(username.value)">Search</button>
-    <div class="container">
-      <div *ngIf="gists.length > 0">
-        <app-gist-item *ngFor="let gist of gists"
-                       [gist]=gist>
-        </app-gist-item>
-      </div>
-      <div *ngIf="gists.length === 0">
-        No results
-      </div>
+  </div>
+  <div class="container">
+    <div *ngIf="gists.length > 0">
+      <app-gist-item *ngFor="let gist of filteredGists"
+                     [gist]=gist
+                     (outputTags)="addToTags($event)">
+      </app-gist-item>
+    </div>
+    <div *ngIf="gists.length === 0">
+      No results
     </div>
   </div>
 </div>

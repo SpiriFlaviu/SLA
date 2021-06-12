@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {GistDTO} from "../../../api/model/gistDTO";
 import {ForkDTO} from "../../../api/model/forkDTO";
 import {GithubService} from "../../../api/service/github.service";
@@ -11,38 +11,38 @@ import {GithubService} from "../../../api/service/github.service";
 export class GistItemComponent implements OnInit {
 
   @Input() gist: GistDTO;
+  @Output() outputTags = new EventEmitter<Set<string>>();
   tags: Set<string>;
   forks: Array<ForkDTO> = [];
-  constructor(private githubService: GithubService) { }
+
+  constructor(private githubService: GithubService) {
+  }
 
   ngOnInit(): void {
-    function computeTags(gist: GistDTO ) {
-      let result = new Set<string>();
-      for(let key in gist.files )
-      {
-        let language = gist.files[key].language;
-        if(language)
-        {
-          result.add(language);
-        }
-        else {
-          result.add("Unknown");
-        }
-      }
-      return result;
-    }
+    this.tags = this.computeTags(this.gist);
+    this.outputTags.emit(this.tags);
+  }
 
-    this.tags = computeTags(this.gist);
+  computeTags(gist: GistDTO) {
+    let result = new Set<string>();
+    for (let key in gist.files) {
+      let language = gist.files[key].language;
+      if (language) {
+        result.add(language);
+      } else {
+        result.add("Unknown");
+      }
+    }
+    return result;
   }
 
   fetchDetails() {
-    this.githubService.getGistForks(this.gist.id).subscribe((data: any[])=>{
+    this.githubService.getGistForks(this.gist.id).subscribe((data: any[]) => {
       this.forks = data;
-      this.forks.sort(function(a,b)
-      {
+      this.forks.sort(function (a, b) {
         return a.created_at < b.created_at ? 1 : -1;
       });
-      this.forks = this.forks.slice(0,3);
+      this.forks = this.forks.slice(0, 3);
       console.log(data);
     });
   }
