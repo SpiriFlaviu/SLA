@@ -1,0 +1,15 @@
+.gist-file-header{
+  display: flex;
+  justify-content: space-between;
+}
+
+.file-content {
+  text-align: left;
+}
+
+code {
+  font-family: Consolas, "courier new", serif;
+  color: blue;
+  background-color: #fefefe;
+  padding: 2px;
+}

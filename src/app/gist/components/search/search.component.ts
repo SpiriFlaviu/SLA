@@ -12,7 +12,6 @@ import {HttpErrorResponse} from "@angular/common/http";
 export class SearchComponent implements OnInit {
 
   gists: Array<GistDTO> = [];
-  isError: boolean = false;
   constructor(private githubService: GithubService) { }
 
   ngOnInit(): void {
@@ -23,14 +22,7 @@ export class SearchComponent implements OnInit {
     {
       this.githubService.getListByUsername(username).subscribe((data: any[])=>{
         this.gists = data;
-        this.isError = false;
-      }),
-        (error: HttpErrorResponse) =>
-        {
-          console.log(error.message);
-          this.gists = [];
-          this.isError = true;
-        }
+      })
     }
   }
 }

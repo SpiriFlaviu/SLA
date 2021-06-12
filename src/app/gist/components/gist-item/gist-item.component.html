@@ -1,28 +1,33 @@
 <mat-expansion-panel (opened)="fetchDetails()">
   <mat-expansion-panel-header>
-    <mat-panel-title>
-      {{gist.description || "No description"}}
+    <mat-panel-title class="gist-header">
+      <div>
+        {{gist.description || "No description"}}
+      </div>
+      <div>
+        <mat-chip-list>
+          <mat-chip
+            class="chip"
+            color="primary"  selected
+            *ngFor="let tag of tags">
+            {{tag}}
+          </mat-chip>
+        </mat-chip-list>
+      </div>
     </mat-panel-title>
-    <mat-panel-description>
-      <mat-chip-list>
-        <mat-chip
-          class="chip"
-          color="primary" size="small" selected
-          *ngFor="let tag of tags">
-          {{tag}}
-        </mat-chip>
-      </mat-chip-list>
-    </mat-panel-description>
   </mat-expansion-panel-header>
 
-  Files:
+  <div class="info">Files:</div>
   <app-gist-file-item *ngFor="let item of gist.files | keyvalue"
       [file]=item.value>
 
   </app-gist-file-item>
 
 
-  <div *ngIf="forks.length > 0">Forked by:
+  <div *ngIf="forks.length > 0">
+    <div class="info">
+      Forked by:
+    </div>
     <mat-card>
       <mat-card-header>
         <div *ngFor="let fork of forks">
