@@ -1,7 +1,7 @@
 <mat-expansion-panel (opened)="fetchDetails()">
   <mat-expansion-panel-header>
     <mat-panel-title>
-      {{gist.description}}
+      {{gist.description || "No description"}}
     </mat-panel-title>
     <mat-panel-description>
       <mat-chip-list>
